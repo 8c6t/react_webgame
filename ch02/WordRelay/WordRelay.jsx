@@ -46,7 +46,7 @@ class WordRelay extends Component {
         <div>{word}</div>
         <form onSubmit={this.onSubmitForm}>
           <input ref={this.onRefInput} value={value} onChange={this.onChangeInput} />
-          <button>입력</button>
+          <button>클릭</button>
         </form>
         <div>{result}</div>
       </>
