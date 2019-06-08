@@ -37,19 +37,20 @@
           const { value, first, second } = this.state
 
           if (parseInt(value) === first * second) {
-            this.setState({
-              result: `${first} * ${second}은 = ${value} 정답!`,
+            // prevState를 사용하려면 함수를 파라미터로 전달
+            this.setState(prevState => ({
+              result: `${prevState.first} * ${prevState.second}은 = ${prevState.value} 정답!`,
               first: Math.ceil(Math.random() * 9),
               second: Math.ceil(Math.random() * 9),
-              value: '',
-            });
+              value: ''
+            }));
           } else {
             this.setState({
               result: '땡',
               value: '',
             });
           }
-        }
+        };
 
         handleOnChange = (e) => {
           this.setState({ value: e.target.value });
