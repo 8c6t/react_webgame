@@ -12,36 +12,34 @@
 <body>
   <div id="root">
     <script type="text/babel">
-        class LikeButton extends React.Component {
-          constructor(props) {
-            super(props);
+      class GuGuDan extends React.Component {
+        constructor(props) {
+          super(props);
 
-            this.state = {
-              liked: false,
-            };
-          }
-
-          render() {
-            return (
-              <button type="submit" onClick={() => { this.setState({ liked: true }) }}>
-                {this.state.liked ? 'Liked' : 'Like'}
-              </button>
-              // JSX (JS + XML)
-            );
-          }
-
-/*           render() {
-            return e(
-              'button',
-              { onClick: () => { this.setState( { liked: true }) }, type: 'submit' },
-              this.state.liked ? 'Liked' : 'Like',
-            );
-          } */
+          this.state = {
+            first: Math.ceil(Math.random() * 9),
+            second: Math.ceil(Math.random() * 9),
+            value: '',
+            result: '',
+          };
         }
+
+        render() {
+          return (
+            <div>
+              <div>{this.state.first} 곱하기 {this.state.second}는?</div>
+              <form onSubmit={onSubmit}>
+                <input type="number" value={this.state.value} onChange={(e) => this.setState({ value: e.target.value })} />
+                <button>입력</button>
+              </form>
+              <div>{this.state.result}</div>
+            </div>
+          );
+        }
+      }
     </script>
     <script type="text/babel">
-      ReactDOM.render(<div><LikeButton /><LikeButton /><LikeButton /><LikeButton /></div>, document.querySelector('#root'));
-      // ReactDOM.render(<e(LikeButton)>, document.querySelector('#root'));
+      ReactDOM.render(<GuGuDan />, document.querySelector('#root'));
     </script>
   </div>
 </body>
