@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   name: 'gugudan-webpack',
@@ -15,10 +16,25 @@ module.exports = {
       test: /\.jsx?$/,
       loader: 'babel-loader',
       options: {
-        presets: ['@babel/preset-env', '@babel/preset-react']
+        presets: [
+          // @babel/preset-env에 대한 세부 옵션
+          ['@babel/preset-env', {
+            targets: {
+              browsers: ['> 1% in KR' ], // browserlist
+            },
+            debug: true,
+          }],
+          '@babel/preset-react',
+        ],
+        plugins: [],
       },
     }],
   },
+  // 
+  plugins: [
+    // 로더(module) 들에게 옵션을 추가해주는 플러그인
+    new webpack.LoaderOptionsPlugin({ debug: true }),
+  ],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'app.js'
