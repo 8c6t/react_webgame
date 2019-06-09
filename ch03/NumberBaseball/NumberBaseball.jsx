@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Try from './Try';
 
 function getNumbers() {
 
@@ -21,6 +22,15 @@ class NumberBaseball extends Component {
 
   }
 
+  fruits = [
+    { fruit: '사과', taste: '맛있다' },
+    { fruit: '감', taste: '시다' },
+    { fruit: '귤', taste: '달다' },
+    { fruit: '밤', taste: '떪다' },
+    { fruit: '배', taste: '맛있다' },
+    { fruit: '사과', taste: '맛없다' },
+  ];
+
   render() {
     const { result, value, answer, tries } = this.state;
 
@@ -32,18 +42,9 @@ class NumberBaseball extends Component {
         </form>
         <div>시도: {tries.length}</div>
         <ul>
-          {[
-            { fruit: '사과', taste: '맛있다' },
-            { fruit: '감', taste: '시다' },
-            { fruit: '귤', taste: '달다' },
-            { fruit: '밤', taste: '떪다' },
-            { fruit: '배', taste: '맛있다' },
-            { fruit: '사과', taste: '맛없다' },
-          ].map((v) => {
-            /* index를 key로 쓰는 경우 성능 최적화에 문제가 있음 */
-            /* 요소가 추가만 되는 배열은 i를 사용해도 됨(삭제 X) */
+          {this.fruits.map((v, i) => {
             return (
-              <li key={v.fruit + v.taste}><b>{v.fruit}</b> - {v.taste}</li>
+              <Try value={v} index={i} />
             )
           })}
         </ul>
