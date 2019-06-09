@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import Try from './Try';
 
 // this를 사용하지 않으면 밖으로 빼도 된다
@@ -13,7 +13,8 @@ function getNumbers() {
   return array;
 }
 
-const NumberBaseball = () => {
+// 자식 컴포넌트들이 모두 PureComponent면 부모 컴포넌트도 PureComponent를 적용할 수 있음
+const NumberBaseball = memo(() => {
   const [result, setResult] = useState('');
   const [value, setValue] = useState('');
   const [answer, setAnswer] = useState(getNumbers());
@@ -76,7 +77,6 @@ const NumberBaseball = () => {
       </ul>
     </>
   );
-
-}
+});
 
 export default NumberBaseball;
