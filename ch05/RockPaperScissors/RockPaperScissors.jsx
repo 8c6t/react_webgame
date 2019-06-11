@@ -46,7 +46,8 @@ class RockPaperScissors extends Component {
     clearInterval(this.interval);
   }
 
-  onClickBtn = (choice) => {
+  // 고차 함수(onClick에서 함수 선언부를 생략한다면)
+  onClickBtn = (choice) => () => {
     const { imgCoord } = this.state;
 
     clearInterval(this.interval);
@@ -75,7 +76,7 @@ class RockPaperScissors extends Component {
     }
     setTimeout(() => {
       this.interval = setInterval(this.changeHand, 100);
-    }, 2000);
+    }, 1000);
   };
 
   changeHand = () => {
@@ -101,9 +102,9 @@ class RockPaperScissors extends Component {
       <>
         <div id="computer" style={{ background: `url(https://en.pimg.jp/023/182/267/1/23182267.jpg) ${imgCoord} 0` }} />
         <div>
-          <button id="scissor" className="btn" onClick={() => this.onClickBtn('scissor')}>가위</button>
-          <button id="rock" className="btn" onClick={() => this.onClickBtn('rock')}>바위</button>
-          <button id="paper" className="btn" onClick={() => this.onClickBtn('paper')}>보</button>
+          <button id="scissor" className="btn" onClick={this.onClickBtn('scissor')}>가위</button>
+          <button id="rock" className="btn" onClick={this.onClickBtn('rock')}>바위</button>
+          <button id="paper" className="btn" onClick={this.onClickBtn('paper')}>보</button>
         </div>
         <div>{result}</div>
         <div>현재 {score}점</div>
