@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import { hot } from 'react-hot-loader/root';
 
 import ResponseCheckClass from './ResponseCheckClass';
+import ResponseCheck from './ResponseCheck';
 
-const Hot = hot(ResponseCheckClass)
+const Hot = hot(ResponseCheck)
 
 ReactDOM.render(<Hot />, document.querySelector('#root'));
