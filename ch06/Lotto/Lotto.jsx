@@ -24,6 +24,17 @@ const Lotto = () => {
   // useRef: 일반 값을 기억
   const timeouts = useRef([]);
 
+/*   
+  // componentDidUpdate만, componentDidMount에서는 작동 X
+  const mounted = useRef(false);
+  useEffect(() => {
+    if (!mounted.current) {
+      mounted.current = true;
+    } else {
+      // 작업
+    }
+  }, [바뀌는값]); */
+
   useEffect(() => {
     console.log('useEffect');
     for (let i = 0; i < winNumbers.length - 1; i++) {
@@ -44,6 +55,11 @@ const Lotto = () => {
     };
   }, [timeouts.current]); // 빈 배열이면 componentDidMount와 동일
   // 배열에 요소가 있으면 componentDidMount와 componentDidUpdate를 둘 다 수행
+
+  useEffect(() => {
+    console.log('로또 숫자를 생성합니다');
+  }, [winNumbers]);
+
 
   // useCallback: 함수 자체를 기억. 함수가 새로 생성되지 않음
   // 자식 컴포넌트에 props로 함수를 넘길 때는 필수(props가 계속 새로 전달됨 -> 리렌더링)
