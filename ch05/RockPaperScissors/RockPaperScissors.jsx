@@ -12,6 +12,27 @@ const scores = {
   paper: -1,
 }
 
+//                        result, imgCoord, score
+// componentDidMount
+// componentDidUpdate
+// componentWillUnmount
+
+// componentDidMount() {
+//   this.setState({
+//     imgCoord: 3,
+//     score: 1,
+//     result: 2,
+//   })
+// }
+
+// useEffect(() => {
+//   setImgCoord();
+//   setScore();
+// }, [imgCoord, score]);
+// useEffect(() => {
+//   setResult();
+// }, [result]);
+
 const computerChoice = (imgCoord) => {
   return Object.entries(rpsCoord).find(function(v) {
     return v[1] === imgCoord;
@@ -26,6 +47,7 @@ const RockPaperScissors = () => {
   const interval = useRef();
 
   // componentDidMount, componentDidUpdate 대응(1:1 대응은 아님)
+  // 각 state별로 useEffect를 여러번 사용할 수 있음(라이프 사이클 메소드에서는 분기 처리해야 함)
   useEffect(() => {
     console.log('다시 실행');
     interval.current = setInterval(changeHand, 100);
