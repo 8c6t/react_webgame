@@ -8,8 +8,8 @@ const ResponseCheck = () => {
 
   // 리렌더링을 하지 않지만 값이 자주 바뀌는 경우 ref를 사용
   const timeout = useRef(null);
-  const startTime = useRef();
-  const endTime = useRef();
+  const startTime = useRef(0);
+  const endTime = useRef(0);
 
   const onClickScreen = () => {
     if (state === 'waiting') {
@@ -59,7 +59,19 @@ const ResponseCheck = () => {
       >
         {message}
       </div>
-      { renderAverage() }
+      {/* JSX 내 javascript 구문 작성 -> IIFE */}
+      {(() => {
+        if (results.length === 0) {
+          return null
+        } else {
+          return (
+          <>
+            <div>평균 시간: {results.reduce((a, c) => a + c) / results.length}ms</div>
+            <button onClick={onReset}>리셋</button>
+          </>
+          )
+        }
+      })()}
     </>
   );
 
