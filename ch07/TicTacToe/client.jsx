@@ -6,4 +6,4 @@ import TicTacToe from './TicTacToe';
 
 const Hot = hot(TicTacToe);
 
-ReactDOM.render(<Hot />, document.getElementById('#root'));
+ReactDOM.render(<Hot />, document.getElementById('root'));

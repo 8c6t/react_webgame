@@ -20,16 +20,17 @@ module.exports = {
             targets: { browsers: ['last 2 chrome versions'] },
             debug: true,
           }],
-          '@babel/preset-react', 
+          '@babel/preset-react',
         ],
-        plugins: ['react-hot-loader/babel'],
+        plugins: ["react-hot-loader/babel"]
       },
+      exclude: path.join(__dirname, 'node_modules'),
     }],
   },
   plugins: [],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'app.js',
-    publicPath: '/dist/',
+    filename: '[name].js',
+    publicPath: '/dist',
   },
 };
